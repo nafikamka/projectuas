@@ -40,6 +40,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
         holder.tvnamadata.setText(nama);
         holder.tvhargadata.setText(harga);
+        holder.tvketerangandata.setText(keterangan);
         Glide
                 .with(context)
                 .load(gambarbaru)
