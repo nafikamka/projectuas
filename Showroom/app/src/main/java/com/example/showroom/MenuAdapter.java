@@ -37,6 +37,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         String gambarbaru = menubaru.getGambar();
         String harga = menubaru.getHarga();
         String nama = menubaru.getNama();
+        String keterangan = menubaru.getKeterangan();
 
         holder.tvnamadata.setText(nama);
         holder.tvhargadata.setText(harga);
@@ -58,12 +59,14 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         public ImageView imdata;
         public TextView tvhargadata;
         public TextView tvnamadata;
+        public TextView tvketerangandata;
 
         public MenuViewHolder(@NonNull View itemView) {
             super(itemView);
             imdata= itemView.findViewById(R.id.img_menu);
             tvhargadata=itemView.findViewById(R.id.tv_harga);
             tvnamadata=itemView.findViewById(R.id.tv_nama);
+            tvketerangandata=itemView.findViewById(R.id.tv_keterangan);
 
 
 
