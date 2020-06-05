@@ -1,5 +1,6 @@
 package com.example.showroom;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +20,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MenuAdapter.OnItemClickListener {
+    public static final String EXTRA_URL = "imageUrl";
+    public static final String EXTRA_NAME = "carName";
+    public static final String EXTRA_PRICE = "carPrice";
+    public static final String EXTRA_DESCRIPTION = "carDescription";
+
     private MenuAdapter menuAdapter;
     private RecyclerView recyclerView;
     private ArrayList<Menu> menus;
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                             menuAdapter = new MenuAdapter(MainActivity.this, menus);
                             recyclerView.setAdapter(menuAdapter);
+                            menuAdapter.SetOnItemClickListener(MainActivity.this);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -69,5 +76,17 @@ public class MainActivity extends AppCompatActivity {
 
     });
         requestQueue.add(request);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent detailIntent = new Intent(this, DetailActivity.class);
+        Menu clickedItem = menus.get(position);
+
+        detailIntent.putExtra(EXTRA_URL, clickedItem.getGambar());
+        detailIntent.putExtra(EXTRA_NAME, clickedItem.getNama());
+        detailIntent.putExtra(EXTRA_PRICE, clickedItem.getHarga());
+        detailIntent.putExtra(EXTRA_DESCRIPTION, clickedItem.getKeterangan());
+        startActivity(detailIntent);
     }
 }

@@ -32,13 +32,6 @@
             android:text="Keterangan"
             android:textStyle="bold"
             android:textSize="15sp"/>
-
-        <Button
-            android:id="@+id/btn_beli"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Beli"
-            android:textSize="20sp"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
